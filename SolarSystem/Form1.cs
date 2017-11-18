@@ -20,7 +20,7 @@ namespace SolarSystem
         Earth.Moon moon = new Earth.Moon();
         Mars.Phobos phob = new Mars.Phobos();
         Mars.Deimos dei = new Mars.Deimos();
-
+        
         public Form1()
         {
             InitializeComponent();
