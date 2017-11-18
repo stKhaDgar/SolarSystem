@@ -24,7 +24,7 @@ namespace SolarSystem
             sun.Location = new Point(this.ClientRectangle.Width / 2 - 40, this.ClientRectangle.Height / 2 - 40);
             merc.icon = pictureBox1;
             merc.timer = new Timer();
-            merc.timer.Interval = 10;
+            merc.timer.Interval = 20;
             merc.centerPositionX = this.ClientRectangle.Width / 2;
             merc.centerPositionY = this.ClientRectangle.Height / 2;
             merc.radiusOrbit = 58;
@@ -63,7 +63,7 @@ namespace SolarSystem
             Xposition = (int)((radiusOrbit + 20) * Math.Sin(angle) + (centerPositionX - 15));
             Yposition = (int)((radiusOrbit + 20) * Math.Cos(angle) + (centerPositionY - 15));
             icon.Location = new Point(Xposition, Yposition);
-            angle = angle + 0.01 * speedSpin;
+            angle = angle + 0.05 * speedSpin;
         }
     }
 }
