@@ -10,8 +10,11 @@ using System.Windows.Forms;
 
 namespace SolarSystem
 {
+
+
     public partial class Form1 : Form
     {
+        
         PictureBox sun = new PictureBox();
         Mercury merc = new Mercury();
         Venus ven = new Venus();
@@ -39,6 +42,7 @@ namespace SolarSystem
             merc.speedSpin = 0.416;
             merc.timer.Tick += new EventHandler(merc.timer_Tick);
             merc.timer.Start();
+            merc.draw = pictureBox9;
 
             // Venus
             ven.icon = pictureBox3;
@@ -108,6 +112,38 @@ namespace SolarSystem
             dei.speedSpin = 0.1;
             dei.timer.Tick += new EventHandler(dei.timer_Tick);
             dei.timer.Start();
+
+            pictureBox9.Paint += new PaintEventHandler(this.orbitPaint);
+        }
+
+        private void orbitPaint(object sender,
+   System.Windows.Forms.PaintEventArgs pe)
+        {
+            Graphics g = pe.Graphics;
+            System.Drawing.Pen myPen;
+            myPen = new System.Drawing.Pen(System.Drawing.Color.LightGray, 2);
+
+            
+            for (double angle=0; angle < 2 * 3.14;)
+            {
+                int Xposition = (int)(58 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
+                int Yposition = (int)(58 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
+                g.DrawLine(myPen, Xposition, Yposition, Xposition+1, Yposition+1);
+
+                int Xposition2 = (int)(108 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
+                int Yposition2 = (int)(108 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
+                g.DrawLine(myPen, Xposition2, Yposition2, Xposition2 + 1, Yposition2 + 1);
+
+                int Xposition3 = (int)(200 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
+                int Yposition3 = (int)(200 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
+                g.DrawLine(myPen, Xposition3, Yposition3, Xposition3 + 1, Yposition3 + 1);
+
+                int Xposition4 = (int)(278 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
+                int Yposition4 = (int)(278 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
+                g.DrawLine(myPen, Xposition4, Yposition4, Xposition4 + 1, Yposition4 + 1);
+                angle = angle + 0.15;
+            }
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -132,6 +168,7 @@ namespace SolarSystem
         public PictureBox icon;
         public Timer timer;
         public double angle = 0;
+        public PictureBox draw;
 
         public void timer_Tick(object sender, EventArgs e)
         {
@@ -139,7 +176,10 @@ namespace SolarSystem
             Yposition = (int)(radiusOrbit * Math.Cos(angle) + (centerPositionY - 15));
             icon.Location = new Point(Xposition, Yposition);
             angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
+
+           
         }
+        
     }
 
     public class Venus
