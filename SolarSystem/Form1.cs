@@ -18,6 +18,8 @@ namespace SolarSystem
         Earth earth = new Earth();
         Mars mars = new Mars();
         Earth.Moon moon = new Earth.Moon();
+        Mars.Phobos phob = new Mars.Phobos();
+        Mars.Deimos dei = new Mars.Deimos();
 
         public Form1()
         {
@@ -82,8 +84,31 @@ namespace SolarSystem
             moon.speedSpin = 0.1;
             moon.timer.Tick += new EventHandler(moon.timer_Tick);
             moon.timer.Start();
+
+            // Phobos
+            phob.mar = mars;
+            phob.icon = pictureBox7;
+            phob.timer = new Timer();
+            phob.timer.Interval = 20;
+            phob.centerPositionX = mars.Xposition;
+            phob.centerPositionY = mars.Yposition;
+            phob.radiusOrbit = 7;
+            phob.speedSpin = 0.3;
+            phob.timer.Tick += new EventHandler(phob.timer_Tick);
+            phob.timer.Start();
+
+            // Deimos
+            dei.mar = mars;
+            dei.icon = pictureBox8;
+            dei.timer = new Timer();
+            dei.timer.Interval = 20;
+            dei.centerPositionX = mars.Xposition;
+            dei.centerPositionY = mars.Yposition;
+            dei.radiusOrbit = 12;
+            dei.speedSpin = 0.1;
+            dei.timer.Tick += new EventHandler(dei.timer_Tick);
+            dei.timer.Start();
         }
-        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -200,5 +225,50 @@ namespace SolarSystem
             icon.Location = new Point(Xposition, Yposition);
             angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
         }
+
+        public class Phobos
+        {
+            public int Xposition;
+            public int Yposition;
+            public int centerPositionX;
+            public int centerPositionY;
+            public double radiusOrbit;
+            public double speedSpin;
+            public PictureBox icon;
+            public Timer timer;
+            public double angle = 0;
+            public Mars mar;
+
+            public void timer_Tick(object sender, EventArgs e)
+            {
+                Xposition = (int)((20 + radiusOrbit) * Math.Sin(angle) + (mar.Xposition + 15));
+                Yposition = (int)((20 + radiusOrbit) * Math.Cos(angle) + (mar.Yposition + 15));
+                icon.Location = new Point(Xposition, Yposition);
+                angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
+            }
+        }
+
+        public class Deimos
+        {
+            public int Xposition;
+            public int Yposition;
+            public int centerPositionX;
+            public int centerPositionY;
+            public double radiusOrbit;
+            public double speedSpin;
+            public PictureBox icon;
+            public Timer timer;
+            public double angle = 0;
+            public Mars mar;
+
+            public void timer_Tick(object sender, EventArgs e)
+            {
+                Xposition = (int)((25 + radiusOrbit) * Math.Sin(angle) + (mar.Xposition + 15));
+                Yposition = (int)((25 + radiusOrbit) * Math.Cos(angle) + (mar.Yposition + 15));
+                icon.Location = new Point(Xposition, Yposition);
+                angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
+            }
+        }
     }
+
 }
