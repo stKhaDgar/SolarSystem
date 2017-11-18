@@ -14,8 +14,8 @@ namespace SolarSystem
     {
         PictureBox sun = new PictureBox();
         Mercury merc = new Mercury();
+        Venus ven = new Venus();
 
-       
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +31,15 @@ namespace SolarSystem
             merc.speedSpin = 0.416;
             merc.timer.Tick += new EventHandler(merc.timer_Tick);
             merc.timer.Start();
+            ven.icon = pictureBox3;
+            ven.timer = new Timer();
+            ven.timer.Interval = 20;
+            ven.centerPositionX = this.ClientRectangle.Width / 2;
+            ven.centerPositionY = this.ClientRectangle.Height / 2;
+            ven.radiusOrbit = 108;
+            ven.speedSpin = 0.416;
+            ven.timer.Tick += new EventHandler(ven.timer_Tick);
+            ven.timer.Start();
         }
         
 
@@ -60,10 +69,32 @@ namespace SolarSystem
 
         public void timer_Tick(object sender, EventArgs e)
         {
-            Xposition = (int)((radiusOrbit + 20) * Math.Sin(angle) + (centerPositionX - 15));
-            Yposition = (int)((radiusOrbit + 20) * Math.Cos(angle) + (centerPositionY - 15));
+            Xposition = (int)(radiusOrbit  * Math.Sin(angle) + (centerPositionX - 15));
+            Yposition = (int)(radiusOrbit * Math.Cos(angle) + (centerPositionY - 15));
             icon.Location = new Point(Xposition, Yposition);
-            angle = angle + 0.05 * speedSpin;
+            angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
+        }
+    }
+
+    public class Venus
+    {
+        public int Xposition;
+        public int Yposition;
+        public int centerPositionX;
+        public int centerPositionY;
+        public double radiusOrbit;
+        public double speedSpin;
+        public int Size;
+        public PictureBox icon;
+        public Timer timer;
+        public double angle = 0;
+
+        public void timer_Tick(object sender, EventArgs e)
+        {
+            Xposition = (int)(radiusOrbit  * Math.Sin(angle) + (centerPositionX - 25));
+            Yposition = (int)(radiusOrbit * Math.Cos(angle) + (centerPositionY - 25));
+            icon.Location = new Point(Xposition, Yposition);
+            angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
         }
     }
 }
