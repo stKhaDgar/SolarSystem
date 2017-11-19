@@ -24,7 +24,8 @@ namespace SolarSystem
         Earth.Moon moon = new Earth.Moon();
         Mars.Phobos phob = new Mars.Phobos();
         Mars.Deimos dei = new Mars.Deimos();
-        
+        Timer paint = new Timer();
+
         public Form1()
         {
             InitializeComponent();
@@ -114,15 +115,11 @@ namespace SolarSystem
             dei.timer.Tick += new EventHandler(dei.timer_Tick);
             dei.timer.Start();
 
-            Timer paint = new Timer();
-            paint.Interval = 2000;
+            
+            paint.Interval = 5;
             paint.Tick += new EventHandler(orbitPaintTimer);
             paint.Start();
-            if(merc.Xposition == (58 * Math.Sin(0.30) + (this.ClientRectangle.Width / 2)))
-            {
-                paint.Stop();
-                Debug.WriteLine("stoped");
-            }
+            Debug.WriteLine(ven.angle);
         }
 
         public void orbitPaintTimer(object sender, EventArgs e)
@@ -130,7 +127,6 @@ namespace SolarSystem
             pictureBox9.Paint += new PaintEventHandler(this.orbitPaint);
             
         }
-
       
         private void orbitPaint(object sender,
    System.Windows.Forms.PaintEventArgs pe)
@@ -139,13 +135,20 @@ namespace SolarSystem
             System.Drawing.Pen myPen;
             myPen = new System.Drawing.Pen(System.Drawing.Color.LightGray, 2);
 
+            
             for (double angle=0; angle < 2 * 3.14;)
             {
+               
+                if (merc.angle >= 6.28)
+                {
+                    paint.Stop();
+                }
                 int Xposition = (int)(58 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
                 int Yposition = (int)(58 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
                 g.DrawLine(myPen, Xposition, Yposition, Xposition+1, Yposition+1);
 
-                /*int Xposition2 = (int)(108 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
+                /*
+                int Xposition2 = (int)(108 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
                 int Yposition2 = (int)(108 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
                 g.DrawLine(myPen, Xposition2, Yposition2, Xposition2 + 1, Yposition2 + 1);
 
