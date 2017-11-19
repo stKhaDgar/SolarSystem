@@ -35,11 +35,6 @@ namespace SolarSystem
 
             // Mercury
             merc.icon = pictureBox1;
-            merc.draw = pictureBox9;
-            merc.timerdraw = new Timer();
-            merc.timerdraw.Interval = 1000;
-            merc.timerdraw.Tick += new EventHandler(merc.timer_P);
-            merc.timerdraw.Start();
             merc.timer = new Timer();
             merc.timer.Interval = 5;
             merc.centerPositionX = this.ClientRectangle.Width / 2;
@@ -119,9 +114,24 @@ namespace SolarSystem
             dei.timer.Tick += new EventHandler(dei.timer_Tick);
             dei.timer.Start();
 
-            pictureBox9.Paint += new PaintEventHandler(this.orbitPaint);
+            Timer paint = new Timer();
+            paint.Interval = 2000;
+            paint.Tick += new EventHandler(orbitPaintTimer);
+            paint.Start();
+            if(merc.Xposition == (58 * Math.Sin(0.30) + (this.ClientRectangle.Width / 2)))
+            {
+                paint.Stop();
+                Debug.WriteLine("stoped");
+            }
         }
 
+        public void orbitPaintTimer(object sender, EventArgs e)
+        {
+            pictureBox9.Paint += new PaintEventHandler(this.orbitPaint);
+            
+        }
+
+      
         private void orbitPaint(object sender,
    System.Windows.Forms.PaintEventArgs pe)
         {
@@ -129,14 +139,13 @@ namespace SolarSystem
             System.Drawing.Pen myPen;
             myPen = new System.Drawing.Pen(System.Drawing.Color.LightGray, 2);
 
-            
             for (double angle=0; angle < 2 * 3.14;)
             {
-               /* int Xposition = (int)(58 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
+                int Xposition = (int)(58 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
                 int Yposition = (int)(58 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
-                g.DrawLine(myPen, Xposition, Yposition, Xposition+1, Yposition+1); */
+                g.DrawLine(myPen, Xposition, Yposition, Xposition+1, Yposition+1);
 
-                int Xposition2 = (int)(108 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
+                /*int Xposition2 = (int)(108 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
                 int Yposition2 = (int)(108 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
                 g.DrawLine(myPen, Xposition2, Yposition2, Xposition2 + 1, Yposition2 + 1);
 
@@ -146,10 +155,12 @@ namespace SolarSystem
 
                 int Xposition4 = (int)(278 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
                 int Yposition4 = (int)(278 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
-                g.DrawLine(myPen, Xposition4, Yposition4, Xposition4 + 1, Yposition4 + 1);
+                g.DrawLine(myPen, Xposition4, Yposition4, Xposition4+1 , Yposition4+1);
+                */
                 angle = angle + 0.15;
+               
             }
-
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -173,9 +184,7 @@ namespace SolarSystem
         public double speedSpin;
         public PictureBox icon;
         public Timer timer;
-        public Timer timerdraw;
         public double angle = 0;
-        public PictureBox draw;
 
         public void timer_Tick(object sender, EventArgs e)
         {
@@ -183,19 +192,6 @@ namespace SolarSystem
             Yposition = (int)(radiusOrbit * Math.Cos(angle) + (centerPositionY - 15));
             icon.Location = new Point(Xposition, Yposition);
             angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
-        }
-
-        public void timer_P(object sender, EventArgs e)
-        {
-            draw.Paint += new PaintEventHandler(timer_Paint);
-        }
-
-        public void timer_Paint(object sender, System.Windows.Forms.PaintEventArgs pe)
-        {
-            Graphics g = pe.Graphics;
-            System.Drawing.Pen myPen;
-            myPen = new System.Drawing.Pen(System.Drawing.Color.LightGray, 25);
-            g.DrawLine(myPen, Xposition, Yposition, Xposition+2, Yposition+2);
         }
 
     }
