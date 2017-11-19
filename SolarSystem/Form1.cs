@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace SolarSystem
 {
@@ -34,6 +35,11 @@ namespace SolarSystem
 
             // Mercury
             merc.icon = pictureBox1;
+            merc.draw = pictureBox9;
+            merc.timerdraw = new Timer();
+            merc.timerdraw.Interval = 1000;
+            merc.timerdraw.Tick += new EventHandler(merc.timer_P);
+            merc.timerdraw.Start();
             merc.timer = new Timer();
             merc.timer.Interval = 5;
             merc.centerPositionX = this.ClientRectangle.Width / 2;
@@ -42,7 +48,7 @@ namespace SolarSystem
             merc.speedSpin = 0.416;
             merc.timer.Tick += new EventHandler(merc.timer_Tick);
             merc.timer.Start();
-            merc.draw = pictureBox9;
+            
 
             // Venus
             ven.icon = pictureBox3;
@@ -126,9 +132,9 @@ namespace SolarSystem
             
             for (double angle=0; angle < 2 * 3.14;)
             {
-                int Xposition = (int)(58 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
+               /* int Xposition = (int)(58 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
                 int Yposition = (int)(58 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
-                g.DrawLine(myPen, Xposition, Yposition, Xposition+1, Yposition+1);
+                g.DrawLine(myPen, Xposition, Yposition, Xposition+1, Yposition+1); */
 
                 int Xposition2 = (int)(108 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
                 int Yposition2 = (int)(108 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
@@ -167,6 +173,7 @@ namespace SolarSystem
         public double speedSpin;
         public PictureBox icon;
         public Timer timer;
+        public Timer timerdraw;
         public double angle = 0;
         public PictureBox draw;
 
@@ -176,10 +183,21 @@ namespace SolarSystem
             Yposition = (int)(radiusOrbit * Math.Cos(angle) + (centerPositionY - 15));
             icon.Location = new Point(Xposition, Yposition);
             angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
-
-           
         }
-        
+
+        public void timer_P(object sender, EventArgs e)
+        {
+            draw.Paint += new PaintEventHandler(timer_Paint);
+        }
+
+        public void timer_Paint(object sender, System.Windows.Forms.PaintEventArgs pe)
+        {
+            Graphics g = pe.Graphics;
+            System.Drawing.Pen myPen;
+            myPen = new System.Drawing.Pen(System.Drawing.Color.LightGray, 25);
+            g.DrawLine(myPen, Xposition, Yposition, Xposition+2, Yposition+2);
+        }
+
     }
 
     public class Venus
