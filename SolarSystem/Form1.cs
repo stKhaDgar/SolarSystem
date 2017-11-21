@@ -35,6 +35,7 @@ namespace SolarSystem
 
             // Mercury
             merc.icon = pictureBox1;
+            merc.labelLocation = label22;
             merc.timer = new Timer();
             merc.timer.Interval = 5;
             merc.centerPositionX = this.ClientRectangle.Width / 2;
@@ -43,9 +44,9 @@ namespace SolarSystem
             merc.speedSpin = 0.416;
             merc.timer.Start();
             
-            
             // Venus
             ven.icon = pictureBox3;
+            ven.labelLocation = label27;
             ven.timer = new Timer();
             ven.timer.Interval = 20;
             ven.centerPositionX = this.ClientRectangle.Width / 2;
@@ -56,6 +57,7 @@ namespace SolarSystem
 
             // Earth
             earth.icon = pictureBox4;
+            earth.labelLocation = label38;
             earth.timer = new Timer();
             earth.timer.Interval = 20;
             earth.centerPositionX = this.ClientRectangle.Width / 2;
@@ -66,6 +68,7 @@ namespace SolarSystem
 
             // Mars
             mars.icon = pictureBox5;
+            mars.labelLocation = label45;
             mars.timer = new Timer();
             mars.timer.Interval = 20;
             mars.centerPositionX = this.ClientRectangle.Width / 2;
@@ -76,6 +79,7 @@ namespace SolarSystem
 
             // Moon
             moon.ear = earth;
+            moon.labelLocation = label52;
             moon.icon = pictureBox6;
             moon.timer = new Timer();
             moon.timer.Interval = 20;
@@ -88,6 +92,7 @@ namespace SolarSystem
 
             // Phobos
             phob.mar = mars;
+            phob.labelLocation = label59;
             phob.icon = pictureBox7;
             phob.timer = new Timer();
             phob.timer.Interval = 20;
@@ -100,6 +105,7 @@ namespace SolarSystem
 
             // Deimos
             dei.mar = mars;
+            dei.labelLocation = label66;
             dei.icon = pictureBox8;
             dei.timer = new Timer();
             dei.timer.Interval = 20;
@@ -125,7 +131,7 @@ namespace SolarSystem
             switch (LogLine)
             {
                 case (0):
-                    label13.Text = "Running the standard program modules...";
+                    label13.Text = "/ Running the standard program modules...";
                     Log.Interval = 100;
                     break;
                 case (1):
@@ -133,7 +139,7 @@ namespace SolarSystem
                     Log.Interval = 600;
                     break;
                 case (2):
-                    label2.Text = "The program was launched";
+                    label2.Text = "# The program was launched";
                     Log.Interval = 50;
                     break;
                 case (3):
@@ -141,8 +147,13 @@ namespace SolarSystem
                     Log.Interval = 1500;
                     break;
                 case (4):
-                    label4.Text = "The Sun is created";
+                    label4.Text = "# The Sun is created";
                     sun.Visible = true;
+                    label17.Text = "Sun";
+                    label18.Text = "Location:";
+                    label19.Text = "X: " + this.ClientRectangle.Width / 2 + ", Y: " + this.ClientRectangle.Height / 2;
+                    label32.Text = "Size:";
+                    label33.Text = "3";
                     Log.Interval = 50;
                     break;
                 case (5):
@@ -150,11 +161,44 @@ namespace SolarSystem
                     Log.Interval = 2500;
                     break;
                 case (6):
-                    label6.Text = "Other planets is created";
+                    label6.Text = "# Other planets is created";
+
                     merc.icon.Visible = true;
+                    label20.Text = "Mercury";
+                    label21.Text = "Location:";
+                    label22.Text = "X: 525, Y: 371";
+                    label23.Text = "Speed:";
+                    label24.Text = merc.speedSpin.ToString();
+                    label30.Text = "Size:";
+                    label31.Text = "3";
+
                     ven.icon.Visible = true;
+                    label25.Text = "Venus";
+                    label26.Text = "Location:";
+                    label27.Text = "X: 515, Y: 411";
+                    label28.Text = "Speed:";
+                    label29.Text = ven.speedSpin.ToString();
+                    label34.Text = "Size:";
+                    label35.Text = "2";
+
                     earth.icon.Visible = true;
+                    label36.Text = "Earth";
+                    label37.Text = "Location:";
+                    label38.Text = "X: 510, Y: 498";
+                    label39.Text = "Speed:";
+                    label40.Text = earth.speedSpin.ToString();
+                    label41.Text = "Size:";
+                    label42.Text = "6";
+
                     mars.icon.Visible = true;
+                    label43.Text = "Mars";
+                    label44.Text = "Location:";
+                    label45.Text = "X: 520, Y: 606";
+                    label46.Text = "Speed:";
+                    label47.Text = mars.speedSpin.ToString();
+                    label48.Text = "Size:";
+                    label49.Text = "4";
+
                     Log.Interval = 50;
                     break;
                 case (7):
@@ -162,7 +206,7 @@ namespace SolarSystem
                     Log.Interval = 1500;
                     break;
                 case (8):
-                    label8.Text = "The planets began to move";
+                    label8.Text = "# The planets began to move";
                     merc.timer.Tick += new EventHandler(merc.timer_Tick);
                     ven.timer.Tick += new EventHandler(ven.timer_Tick);
                     earth.timer.Tick += new EventHandler(earth.timer_Tick);
@@ -174,18 +218,42 @@ namespace SolarSystem
                     Log.Interval = 2000;
                     break;
                 case (10):
-                    label10.Text = "Satellites of planets created";
+                    label10.Text = "# Satellites of planets created";
                     moon.icon.Visible = true;
+                    label50.Text = "Moon";
+                    label51.Text = "Location:";
+                    label52.Visible = true;
+                    label53.Text = "Speed:";
+                    label54.Text = moon.speedSpin.ToString();
+                    label55.Text = "Size:";
+                    label56.Text = "2";
+
                     phob.icon.Visible = true;
+                    label57.Text = "Phobos";
+                    label58.Text = "Location:";
+                    label59.Visible = true;
+                    label60.Text = "Speed:";
+                    label61.Text = phob.speedSpin.ToString();
+                    label62.Text = "Size:";
+                    label63.Text = "1";
+
                     dei.icon.Visible = true;
+                    label64.Text = "Deimos";
+                    label65.Text = "Location:";
+                    label66.Visible = true;
+                    label67.Text = "Speed:";
+                    label68.Text = dei.speedSpin.ToString();
+                    label69.Text = "Size:";
+                    label70.Text = "1";
+
                     Log.Interval = 50;
                     break;
                 case (11):
-                    label14.Text = "All standard modules are started";
+                    label14.Text = "/ Modules are started";
                     Log.Interval = 500;
                     break;
                 case (12):
-                    label15.Text = "Running additional program modules...";
+                    label15.Text = "/ Running additional program modules...";
                     Log.Interval = 100;
                     break;
                 case (13):
@@ -193,12 +261,12 @@ namespace SolarSystem
                     Log.Interval = 2000;
                     break;
                 case (14):
-                    label12.Text = "The function of drawing the orbits is started";
+                    label12.Text = "# The function of drawing the orbits is started";
                     paintOrbitPlanets.Tick += new EventHandler(orbitPaintTimer);
                     Log.Interval = 50;
                     break;
                 case (15):
-                    label16.Text = "All additional modules are started";
+                    label16.Text = "/ Modules are started";
                     break;
             }
             LogLine++;
@@ -252,6 +320,11 @@ namespace SolarSystem
         {
 
         }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     public class Mercury
     {
@@ -264,6 +337,7 @@ namespace SolarSystem
         public PictureBox icon;
         public Timer timer;
         public double angle = 0;
+        public Label labelLocation;
 
         public void timer_Tick(object sender, EventArgs e)
         {
@@ -271,9 +345,9 @@ namespace SolarSystem
             Yposition = (int)(radiusOrbit * Math.Cos(angle) + (centerPositionY - 15));
             icon.Location = new Point(Xposition, Yposition);
             angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
-            
+            labelLocation.Text = "X: " + Xposition + ", Y: " + Yposition;
         }
-
+        
     }
     public class Venus
     {
@@ -286,6 +360,7 @@ namespace SolarSystem
         public PictureBox icon;
         public Timer timer;
         public double angle = 0;
+        public Label labelLocation;
 
         public void timer_Tick(object sender, EventArgs e)
         {
@@ -293,6 +368,7 @@ namespace SolarSystem
             Yposition = (int)(radiusOrbit * Math.Cos(angle) + (centerPositionY - 25));
             icon.Location = new Point(Xposition, Yposition);
             angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
+            labelLocation.Text = "X: " + Xposition + ", Y: " + Yposition;
         }
     }
     public class Earth
@@ -306,6 +382,7 @@ namespace SolarSystem
         public PictureBox icon;
         public Timer timer;
         public double angle = 0;
+        public Label labelLocation;
 
         public void timer_Tick(object sender, EventArgs e)
         {
@@ -313,6 +390,7 @@ namespace SolarSystem
             Yposition = (int)((50+radiusOrbit) * Math.Cos(angle) + (centerPositionY - 30));
             icon.Location = new Point(Xposition, Yposition);
             angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
+            labelLocation.Text = "X: " + Xposition + ", Y: " + Yposition;
         }
 
         public class Moon
@@ -327,6 +405,7 @@ namespace SolarSystem
             public Timer timer;
             public double angle = 0;
             public Earth ear;
+            public Label labelLocation;
 
             public void timer_Tick(object sender, EventArgs e)
             {
@@ -334,6 +413,7 @@ namespace SolarSystem
                 Yposition = (int)((30 + radiusOrbit) * Math.Cos(angle) + (ear.Yposition + 20));
                 icon.Location = new Point(Xposition, Yposition);
                 angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
+                labelLocation.Text = "X: " + Xposition + ", Y: " + Yposition;
             }
         }
     }
@@ -348,6 +428,7 @@ namespace SolarSystem
         public PictureBox icon;
         public Timer timer;
         public double angle = 0;
+        public Label labelLocation;
 
         public void timer_Tick(object sender, EventArgs e)
         {
@@ -355,6 +436,7 @@ namespace SolarSystem
             Yposition = (int)((70 + radiusOrbit) * Math.Cos(angle) + (centerPositionY - 20));
             icon.Location = new Point(Xposition, Yposition);
             angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
+            labelLocation.Text = "X: " + Xposition + ", Y: " + Yposition;
         }
 
         public class Phobos
@@ -369,6 +451,7 @@ namespace SolarSystem
             public Timer timer;
             public double angle = 0;
             public Mars mar;
+            public Label labelLocation;
 
             public void timer_Tick(object sender, EventArgs e)
             {
@@ -376,6 +459,7 @@ namespace SolarSystem
                 Yposition = (int)((20 + radiusOrbit) * Math.Cos(angle) + (mar.Yposition + 15));
                 icon.Location = new Point(Xposition, Yposition);
                 angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
+                labelLocation.Text = "X: " + Xposition + ", Y: " + Yposition;
             }
         }
 
@@ -391,6 +475,7 @@ namespace SolarSystem
             public Timer timer;
             public double angle = 0;
             public Mars mar;
+            public Label labelLocation;
 
             public void timer_Tick(object sender, EventArgs e)
             {
@@ -398,6 +483,7 @@ namespace SolarSystem
                 Yposition = (int)((25 + radiusOrbit) * Math.Cos(angle) + (mar.Yposition + 15));
                 icon.Location = new Point(Xposition, Yposition);
                 angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
+                labelLocation.Text = "X: " + Xposition + ", Y: " + Yposition;
             }
         }
     }
