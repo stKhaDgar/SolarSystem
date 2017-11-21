@@ -38,6 +38,7 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -56,7 +57,7 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.ErrorImage = null;
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(98, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(779, 124);
             this.pictureBox1.MaximumSize = new System.Drawing.Size(30, 30);
             this.pictureBox1.MinimumSize = new System.Drawing.Size(30, 30);
             this.pictureBox1.Name = "pictureBox1";
@@ -68,7 +69,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox2.Location = new System.Drawing.Point(693, 124);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(80, 80);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -81,7 +82,7 @@
             this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox3.InitialImage = null;
-            this.pictureBox3.Location = new System.Drawing.Point(134, 12);
+            this.pictureBox3.Location = new System.Drawing.Point(815, 124);
             this.pictureBox3.MaximumSize = new System.Drawing.Size(50, 50);
             this.pictureBox3.MinimumSize = new System.Drawing.Size(50, 50);
             this.pictureBox3.Name = "pictureBox3";
@@ -96,7 +97,7 @@
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox4.ErrorImage = null;
             this.pictureBox4.InitialImage = null;
-            this.pictureBox4.Location = new System.Drawing.Point(190, 12);
+            this.pictureBox4.Location = new System.Drawing.Point(871, 124);
             this.pictureBox4.MaximumSize = new System.Drawing.Size(60, 60);
             this.pictureBox4.MinimumSize = new System.Drawing.Size(60, 60);
             this.pictureBox4.Name = "pictureBox4";
@@ -109,7 +110,7 @@
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
             this.pictureBox5.InitialImage = null;
-            this.pictureBox5.Location = new System.Drawing.Point(256, 12);
+            this.pictureBox5.Location = new System.Drawing.Point(937, 124);
             this.pictureBox5.MaximumSize = new System.Drawing.Size(40, 40);
             this.pictureBox5.MinimumSize = new System.Drawing.Size(40, 40);
             this.pictureBox5.Name = "pictureBox5";
@@ -123,7 +124,7 @@
             this.pictureBox6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.BackgroundImage")));
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox6.InitialImage = null;
-            this.pictureBox6.Location = new System.Drawing.Point(302, 12);
+            this.pictureBox6.Location = new System.Drawing.Point(983, 124);
             this.pictureBox6.MaximumSize = new System.Drawing.Size(20, 20);
             this.pictureBox6.MinimumSize = new System.Drawing.Size(20, 20);
             this.pictureBox6.Name = "pictureBox6";
@@ -136,7 +137,7 @@
             this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.BackgroundImage")));
             this.pictureBox7.InitialImage = null;
-            this.pictureBox7.Location = new System.Drawing.Point(328, 12);
+            this.pictureBox7.Location = new System.Drawing.Point(1009, 124);
             this.pictureBox7.MaximumSize = new System.Drawing.Size(10, 10);
             this.pictureBox7.MinimumSize = new System.Drawing.Size(10, 10);
             this.pictureBox7.Name = "pictureBox7";
@@ -149,7 +150,7 @@
             this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.BackgroundImage")));
             this.pictureBox8.InitialImage = null;
-            this.pictureBox8.Location = new System.Drawing.Point(344, 12);
+            this.pictureBox8.Location = new System.Drawing.Point(1025, 124);
             this.pictureBox8.MaximumSize = new System.Drawing.Size(10, 10);
             this.pictureBox8.MinimumSize = new System.Drawing.Size(10, 10);
             this.pictureBox8.Name = "pictureBox8";
@@ -169,12 +170,24 @@
             this.pictureBox9.TabIndex = 9;
             this.pictureBox9.TabStop = false;
             // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.Black;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.ForeColor = System.Drawing.SystemColors.Info;
+            this.textBox1.Location = new System.Drawing.Point(24, 23);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.TabIndex = 10;
+            this.textBox1.Text = "asdsad";
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1080, 657);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.pictureBox7);
@@ -203,6 +216,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -216,6 +230,7 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

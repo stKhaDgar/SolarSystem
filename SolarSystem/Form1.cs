@@ -44,6 +44,7 @@ namespace SolarSystem
             merc.timer.Tick += new EventHandler(merc.timer_Tick);
             merc.timer.Start();
             
+            
             // Venus
             ven.icon = pictureBox3;
             ven.timer = new Timer();
@@ -187,6 +188,7 @@ namespace SolarSystem
             Yposition = (int)(radiusOrbit * Math.Cos(angle) + (centerPositionY - 15));
             icon.Location = new Point(Xposition, Yposition);
             angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
+            
         }
 
     }
