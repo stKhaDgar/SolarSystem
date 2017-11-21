@@ -11,8 +11,6 @@ using System.Diagnostics;
 
 namespace SolarSystem
 {
-
-
     public partial class Form1 : Form
     {
         PictureBox sun = new PictureBox();          // Sun
@@ -24,11 +22,13 @@ namespace SolarSystem
         Mars.Phobos phob = new Mars.Phobos();       // Phobos
         Mars.Deimos dei = new Mars.Deimos();        // Deimos
         Timer paintOrbitPlanets = new Timer();      // Timer for drawing the orbits of the planets
-        
+        Timer Log = new Timer();
+        int LogLine = 0;
+
         public Form1()
         {
             InitializeComponent();
-            
+
             // Sun
             sun = pictureBox2;
             sun.Location = new Point(this.ClientRectangle.Width / 2 - 40, this.ClientRectangle.Height / 2 - 40);
@@ -41,7 +41,6 @@ namespace SolarSystem
             merc.centerPositionY = this.ClientRectangle.Height / 2;
             merc.radiusOrbit = 58;
             merc.speedSpin = 0.416;
-            merc.timer.Tick += new EventHandler(merc.timer_Tick);
             merc.timer.Start();
             
             
@@ -53,7 +52,6 @@ namespace SolarSystem
             ven.centerPositionY = this.ClientRectangle.Height / 2;
             ven.radiusOrbit = 108;
             ven.speedSpin = 0.416;
-            ven.timer.Tick += new EventHandler(ven.timer_Tick);
             ven.timer.Start();
 
             // Earth
@@ -64,7 +62,6 @@ namespace SolarSystem
             earth.centerPositionY = this.ClientRectangle.Height / 2;
             earth.radiusOrbit = 150;
             earth.speedSpin = 0.1;
-            earth.timer.Tick += new EventHandler(earth.timer_Tick);
             earth.timer.Start();
 
             // Mars
@@ -75,7 +72,6 @@ namespace SolarSystem
             mars.centerPositionY = this.ClientRectangle.Height / 2;
             mars.radiusOrbit = 228;
             mars.speedSpin = 0.053;
-            mars.timer.Tick += new EventHandler(mars.timer_Tick);
             mars.timer.Start();
 
             // Moon
@@ -115,9 +111,97 @@ namespace SolarSystem
             dei.timer.Start();
 
             // Timer for drawing the orbits of the planets
-            paintOrbitPlanets.Interval = 2000;
-            paintOrbitPlanets.Tick += new EventHandler(orbitPaintTimer);
+            paintOrbitPlanets.Interval = 50;
             paintOrbitPlanets.Start();
+
+            Log.Interval = 100;
+            Log.Tick += new EventHandler(LogStart);
+            Log.Start();
+        }
+
+        //
+        public void LogStart(object sender, EventArgs e)
+        {
+            switch (LogLine)
+            {
+                case (0):
+                    label13.Text = "Running the standard program modules...";
+                    Log.Interval = 100;
+                    break;
+                case (1):
+                    label1.Text = "Running the program...";
+                    Log.Interval = 600;
+                    break;
+                case (2):
+                    label2.Text = "The program was launched";
+                    Log.Interval = 50;
+                    break;
+                case (3):
+                    label3.Text = "Making the Sun...";
+                    Log.Interval = 1500;
+                    break;
+                case (4):
+                    label4.Text = "The Sun is created";
+                    sun.Visible = true;
+                    Log.Interval = 50;
+                    break;
+                case (5):
+                    label5.Text = "Create the other planets...";
+                    Log.Interval = 2500;
+                    break;
+                case (6):
+                    label6.Text = "Other planets is created";
+                    merc.icon.Visible = true;
+                    ven.icon.Visible = true;
+                    earth.icon.Visible = true;
+                    mars.icon.Visible = true;
+                    Log.Interval = 50;
+                    break;
+                case (7):
+                    label7.Text = "Attempt to move planets...";
+                    Log.Interval = 1500;
+                    break;
+                case (8):
+                    label8.Text = "The planets began to move";
+                    merc.timer.Tick += new EventHandler(merc.timer_Tick);
+                    ven.timer.Tick += new EventHandler(ven.timer_Tick);
+                    earth.timer.Tick += new EventHandler(earth.timer_Tick);
+                    mars.timer.Tick += new EventHandler(mars.timer_Tick);
+                    Log.Interval = 50;
+                    break;
+                case (9):
+                    label9.Text = "Create satellites of the planets...";
+                    Log.Interval = 2000;
+                    break;
+                case (10):
+                    label10.Text = "Satellites of planets created";
+                    moon.icon.Visible = true;
+                    phob.icon.Visible = true;
+                    dei.icon.Visible = true;
+                    Log.Interval = 50;
+                    break;
+                case (11):
+                    label14.Text = "All standard modules are started";
+                    Log.Interval = 500;
+                    break;
+                case (12):
+                    label15.Text = "Running additional program modules...";
+                    Log.Interval = 100;
+                    break;
+                case (13):
+                    label11.Text = "Running the function of drawing the orbits...";
+                    Log.Interval = 2000;
+                    break;
+                case (14):
+                    label12.Text = "The function of drawing the orbits is started";
+                    paintOrbitPlanets.Tick += new EventHandler(orbitPaintTimer);
+                    Log.Interval = 50;
+                    break;
+                case (15):
+                    label16.Text = "All additional modules are started";
+                    break;
+            }
+            LogLine++;
         }
 
         // Function-timer for drawing the orbits of the planets
@@ -151,8 +235,8 @@ namespace SolarSystem
                 int Yposition3 = (int)(200 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
                 g.DrawLine(myPen, Xposition3, Yposition3, Xposition3 + 1, Yposition3 + 1);
 
-                int Xposition4 = (int)(278 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
-                int Yposition4 = (int)(278 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
+                int Xposition4 = (int)(298 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
+                int Yposition4 = (int)(298 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
                 g.DrawLine(myPen, Xposition4, Yposition4, Xposition4+1 , Yposition4+1);
 
                 angle = angle + 0.15;
@@ -169,7 +253,6 @@ namespace SolarSystem
 
         }
     }
-
     public class Mercury
     {
         public int Xposition;
@@ -184,7 +267,7 @@ namespace SolarSystem
 
         public void timer_Tick(object sender, EventArgs e)
         {
-            Xposition = (int)(radiusOrbit  * Math.Sin(angle) + (centerPositionX - 15));
+            Xposition = (int)(radiusOrbit * Math.Sin(angle) + (centerPositionX - 15));
             Yposition = (int)(radiusOrbit * Math.Cos(angle) + (centerPositionY - 15));
             icon.Location = new Point(Xposition, Yposition);
             angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
@@ -268,8 +351,8 @@ namespace SolarSystem
 
         public void timer_Tick(object sender, EventArgs e)
         {
-            Xposition = (int)((50 + radiusOrbit) * Math.Sin(angle) + (centerPositionX - 20));
-            Yposition = (int)((50 + radiusOrbit) * Math.Cos(angle) + (centerPositionY - 20));
+            Xposition = (int)((70 + radiusOrbit) * Math.Sin(angle) + (centerPositionX - 20));
+            Yposition = (int)((70 + radiusOrbit) * Math.Cos(angle) + (centerPositionY - 20));
             icon.Location = new Point(Xposition, Yposition);
             angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
         }
@@ -318,5 +401,4 @@ namespace SolarSystem
             }
         }
     }
-
 }
