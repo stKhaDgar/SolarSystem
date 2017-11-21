@@ -153,7 +153,7 @@ namespace SolarSystem
                     label18.Text = "Location:";
                     label19.Text = "X: " + this.ClientRectangle.Width / 2 + ", Y: " + this.ClientRectangle.Height / 2;
                     label32.Text = "Size:";
-                    label33.Text = "3";
+                    label33.Text = "695 700 km";
                     Log.Interval = 50;
                     break;
                 case (5):
@@ -170,7 +170,7 @@ namespace SolarSystem
                     label23.Text = "Speed:";
                     label24.Text = merc.speedSpin.ToString();
                     label30.Text = "Size:";
-                    label31.Text = "3";
+                    label31.Text = "2 440 km";
 
                     ven.icon.Visible = true;
                     label25.Text = "Venus";
@@ -179,7 +179,7 @@ namespace SolarSystem
                     label28.Text = "Speed:";
                     label29.Text = ven.speedSpin.ToString();
                     label34.Text = "Size:";
-                    label35.Text = "2";
+                    label35.Text = "6 052 km";
 
                     earth.icon.Visible = true;
                     label36.Text = "Earth";
@@ -188,7 +188,7 @@ namespace SolarSystem
                     label39.Text = "Speed:";
                     label40.Text = earth.speedSpin.ToString();
                     label41.Text = "Size:";
-                    label42.Text = "6";
+                    label42.Text = "6 371 km";
 
                     mars.icon.Visible = true;
                     label43.Text = "Mars";
@@ -197,7 +197,7 @@ namespace SolarSystem
                     label46.Text = "Speed:";
                     label47.Text = mars.speedSpin.ToString();
                     label48.Text = "Size:";
-                    label49.Text = "4";
+                    label49.Text = "3 390 km";
 
                     Log.Interval = 50;
                     break;
@@ -226,7 +226,7 @@ namespace SolarSystem
                     label53.Text = "Speed:";
                     label54.Text = moon.speedSpin.ToString();
                     label55.Text = "Size:";
-                    label56.Text = "2";
+                    label56.Text = "1 737 km";
 
                     phob.icon.Visible = true;
                     label57.Text = "Phobos";
@@ -235,7 +235,7 @@ namespace SolarSystem
                     label60.Text = "Speed:";
                     label61.Text = phob.speedSpin.ToString();
                     label62.Text = "Size:";
-                    label63.Text = "1";
+                    label63.Text = "70 km";
 
                     dei.icon.Visible = true;
                     label64.Text = "Deimos";
@@ -244,7 +244,7 @@ namespace SolarSystem
                     label67.Text = "Speed:";
                     label68.Text = dei.speedSpin.ToString();
                     label69.Text = "Size:";
-                    label70.Text = "1";
+                    label70.Text = "12 km";
 
                     Log.Interval = 50;
                     break;
