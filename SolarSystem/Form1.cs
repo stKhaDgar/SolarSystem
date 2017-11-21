@@ -16,15 +16,17 @@ namespace SolarSystem
     public partial class Form1 : Form
     {
         
-        PictureBox sun = new PictureBox();
-        Mercury merc = new Mercury();
-        Venus ven = new Venus();
-        Earth earth = new Earth();
-        Mars mars = new Mars();
-        Earth.Moon moon = new Earth.Moon();
-        Mars.Phobos phob = new Mars.Phobos();
-        Mars.Deimos dei = new Mars.Deimos();
-        Timer paint = new Timer();
+        PictureBox sun = new PictureBox();          // Sun
+        Mercury merc = new Mercury();               // Mercury
+        Venus ven = new Venus();                    // Venus
+        Earth earth = new Earth();                  // Earth
+        Mars mars = new Mars();                     // Mars
+        Earth.Moon moon = new Earth.Moon();         // Moon
+        Mars.Phobos phob = new Mars.Phobos();       // Phobos
+        Mars.Deimos dei = new Mars.Deimos();        // Deimos
+        Timer paint = new Timer();                  // Timer for drawing the orbits of the planets
+
+        
 
         public Form1()
         {
@@ -115,19 +117,20 @@ namespace SolarSystem
             dei.timer.Tick += new EventHandler(dei.timer_Tick);
             dei.timer.Start();
 
-            
+            // Timer for drawing the orbits of the planets
             paint.Interval = 5;
             paint.Tick += new EventHandler(orbitPaintTimer);
             paint.Start();
-            Debug.WriteLine(ven.angle);
         }
 
+        // Function-timer for drawing the orbits of the planets
         public void orbitPaintTimer(object sender, EventArgs e)
         {
             pictureBox9.Paint += new PaintEventHandler(this.orbitPaint);
             
         }
       
+        // Function for drawing the orbits of the planets
         private void orbitPaint(object sender,
    System.Windows.Forms.PaintEventArgs pe)
         {
@@ -138,16 +141,14 @@ namespace SolarSystem
             
             for (double angle=0; angle < 2 * 3.14;)
             {
-               
-                if (merc.angle >= 6.28)
-                {
-                    paint.Stop();
-                }
+                // Stop the timer
+                paint.Stop();
+                
                 int Xposition = (int)(58 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
                 int Yposition = (int)(58 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
                 g.DrawLine(myPen, Xposition, Yposition, Xposition+1, Yposition+1);
 
-                /*
+                
                 int Xposition2 = (int)(108 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
                 int Yposition2 = (int)(108 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
                 g.DrawLine(myPen, Xposition2, Yposition2, Xposition2 + 1, Yposition2 + 1);
@@ -159,7 +160,7 @@ namespace SolarSystem
                 int Xposition4 = (int)(278 * Math.Sin(angle) + (this.ClientRectangle.Width / 2));
                 int Yposition4 = (int)(278 * Math.Cos(angle) + (this.ClientRectangle.Height / 2));
                 g.DrawLine(myPen, Xposition4, Yposition4, Xposition4+1 , Yposition4+1);
-                */
+                
                 angle = angle + 0.15;
                
             }
@@ -170,7 +171,6 @@ namespace SolarSystem
         {
            
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -198,7 +198,6 @@ namespace SolarSystem
         }
 
     }
-
     public class Venus
     {
         public int Xposition;
@@ -219,7 +218,6 @@ namespace SolarSystem
             angle = angle + ((double)1 / radiusOrbit) * speedSpin * 10;
         }
     }
-
     public class Earth
     {
         public int Xposition;
@@ -262,7 +260,6 @@ namespace SolarSystem
             }
         }
     }
-
     public class Mars
     {
         public int Xposition;
